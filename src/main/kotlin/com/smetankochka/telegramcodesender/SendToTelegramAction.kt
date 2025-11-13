@@ -4,7 +4,6 @@ import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.ui.Messages
-import java.io.OutputStream
 import java.net.HttpURLConnection
 import java.net.URL
 import java.nio.charset.StandardCharsets
@@ -13,8 +12,8 @@ class SendToTelegramAction : AnAction() {
 
     companion object {
         // ЗАМЕНИТЕ НА СВОИ ЗНАЧЕНИЯ!
-        private const val BOT_TOKEN = "8585869914:AAHt5t8cGj2_70sOyRckLJA8HxSUP1Fc0Xs"
-        private const val CHAT_ID = "1759734963"
+        private const val BOT_TOKEN = "your_bot_token"
+        private const val CHAT_ID = "your_chat_id"
     }
 
     override fun actionPerformed(event: AnActionEvent) {
