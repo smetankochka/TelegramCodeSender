@@ -1,0 +1,55 @@
+# Gradle
+.gradle/
+build/
+out/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+.idea_modules/
+
+# Plugin
+.intellijPlatform/
+
+# Kotlin
+.kotlin/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Runtime data
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Gradle config
+!gradle-wrapper.jar
+
+# Local configuration
+local.properties
+
+# Build outputs
+/distributions/
+
+# Mac
+.DS_Store?
+
+# Windows
+ehthumbs.db
+[Tt]humbs.db
+
+# JetBrains IDEs
+*.swp
+*.swo
+*~
