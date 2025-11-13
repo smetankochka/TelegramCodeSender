@@ -12,8 +12,8 @@ class SendToTelegramAction : AnAction() {
 
     companion object {
         // ЗАМЕНИТЕ НА СВОИ ЗНАЧЕНИЯ!
-        private const val BOT_TOKEN = "your_bot_token"
-        private const val CHAT_ID = "your_chat_id"
+        private const val BOT_TOKEN = "8585869914:AAHt5t8cGj2_70sOyRckLJA8HxSUP1Fc0Xs"
+        private const val CHAT_ID = "1759734963"
     }
 
     override fun actionPerformed(event: AnActionEvent) {

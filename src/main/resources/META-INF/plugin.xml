@@ -2,7 +2,7 @@
     <id>com.smetankochka.telegramcodesender</id>
     <name>Telegram Code Sender</name>
     <version>1.0.0</version>
-    <vendor email="mmura997@yandex.by" url="https://yourwebsite.com">
+    <vendor email="mmura997@yandex.by">
         smetankochka
     </vendor>
 
@@ -17,15 +17,16 @@
     <idea-version since-build="231"/>
 
     <depends>com.intellij.modules.platform</depends>
-    <depends>com.intellij.modules.python</depends>
 
     <actions>
         <action id="TelegramCodeSender.SendToTelegram"
                 class="com.smetankochka.telegramcodesender.SendToTelegramAction"
                 text="Send Code to Telegram"
                 description="Send selected code to Telegram with formatting">
+
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt T"/>
+
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl k"/>
         </action>
     </actions>
 </idea-plugin>
