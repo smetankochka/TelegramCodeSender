@@ -9,14 +9,19 @@ import java.net.URL
 import java.nio.charset.StandardCharsets
 
 class SendToTelegramAction : AnAction() {
-
     companion object {
-        // ЗАМЕНИТЕ НА СВОИ ЗНАЧЕНИЯ!
-        private const val BOT_TOKEN = "8585869914:AAHt5t8cGj2_70sOyRckLJA8HxSUP1Fc0Xs"
-        private const val CHAT_ID = "1759734963"
+        private const val BOT_TOKEN = "PUT"
+        private const val CHAT_ID = "PUT"
     }
 
     override fun actionPerformed(event: AnActionEvent) {
+        /**
+         * Выполняется при активации действия
+         * Принимает:
+         *     (AnActionEvent) event - событие, содержащее контекст выполнения действия
+         * Возвращает:
+         *     (void)
+         */
         val project = event.project
         val editor = event.getData(CommonDataKeys.EDITOR)
 
@@ -32,7 +37,6 @@ class SendToTelegramAction : AnAction() {
             return
         }
 
-        // Обрамляем текст в ``` для форматирования кода
         val formattedText = "```\n$selectedText\n```"
 
         try {
@@ -48,13 +52,28 @@ class SendToTelegramAction : AnAction() {
     }
 
     override fun update(event: AnActionEvent) {
-        // Показывать действие только когда есть выделенный текст
+        /**
+         * Обновляет состояние действия (видимость и доступность)
+         * Принимает:
+         *     (AnActionEvent) event - событие, содержащее контекст для обновления представления
+         * Возвращает:
+         *     (void)
+         */
         val editor = event.getData(CommonDataKeys.EDITOR)
         val hasSelection = editor != null && editor.selectionModel.hasSelection()
         event.presentation.isEnabledAndVisible = hasSelection
     }
 
     private fun sendToTelegram(text: String) {
+        /**
+         * Отправляет форматированный текст в Telegram чат через Bot API
+         * Принимает:
+         *     (String) text - текст для отправки в Telegram (уже форматированный с кодом)
+         * Возвращает:
+         *     (void)
+         * Исключения:
+         *     RuntimeException - если Telegram API возвращает код ответа отличный от 200
+         */
         val urlString = "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
 
         val url = URL(urlString)
@@ -66,7 +85,6 @@ class SendToTelegramAction : AnAction() {
         conn.connectTimeout = 10000
         conn.readTimeout = 10000
 
-        // Экранируем текст для JSON
         val escapedText = text.replace("\\", "\\\\")
             .replace("\"", "\\\"")
             .replace("\n", "\\n")
@@ -83,7 +101,7 @@ class SendToTelegramAction : AnAction() {
 
         conn.outputStream.use { os ->
             val input = jsonBody.toByteArray(StandardCharsets.UTF_8)
-            os.write(input, 0, input.size)  // ← ИСПРАВЛЕНО: .size вместо .length
+            os.write(input, 0, input.size)
         }
 
         val responseCode = conn.responseCode
