@@ -10,18 +10,17 @@ import java.nio.charset.StandardCharsets
 
 class SendToTelegramAction : AnAction() {
     companion object {
-        private const val BOT_TOKEN = "PUT"
-        private const val CHAT_ID = "PUT"
+        private const val BOT_TOKEN = "8585869914:AAHt5t8cGj2_70sOyRckLJA8HxSUP1Fc0Xs"
+        private const val CHAT_ID = "1759734963"
     }
-
+    /**
+     * Выполняется при активации действия
+     * Принимает:
+     *     (AnActionEvent) event - событие, содержащее контекст выполнения действия
+     * Возвращает:
+     *     (void)
+     */
     override fun actionPerformed(event: AnActionEvent) {
-        /**
-         * Выполняется при активации действия
-         * Принимает:
-         *     (AnActionEvent) event - событие, содержащее контекст выполнения действия
-         * Возвращает:
-         *     (void)
-         */
         val project = event.project
         val editor = event.getData(CommonDataKeys.EDITOR)
 
@@ -50,30 +49,29 @@ class SendToTelegramAction : AnAction() {
             )
         }
     }
-
+    /**
+     * Обновляет состояние действия (видимость и доступность)
+     * Принимает:
+     *     (AnActionEvent) event - событие, содержащее контекст для обновления представления
+     * Возвращает:
+     *     (void)
+     */
     override fun update(event: AnActionEvent) {
-        /**
-         * Обновляет состояние действия (видимость и доступность)
-         * Принимает:
-         *     (AnActionEvent) event - событие, содержащее контекст для обновления представления
-         * Возвращает:
-         *     (void)
-         */
         val editor = event.getData(CommonDataKeys.EDITOR)
         val hasSelection = editor != null && editor.selectionModel.hasSelection()
         event.presentation.isEnabledAndVisible = hasSelection
     }
 
+    /**
+     * Отправляет форматированный текст в Telegram чат через Bot API
+     * Принимает:
+     *     (String) text - текст для отправки в Telegram (уже форматированный с кодом)
+     * Возвращает:
+     *     (void)
+     * Исключения:
+     *     RuntimeException - если Telegram API возвращает код ответа отличный от 200
+     */
     private fun sendToTelegram(text: String) {
-        /**
-         * Отправляет форматированный текст в Telegram чат через Bot API
-         * Принимает:
-         *     (String) text - текст для отправки в Telegram (уже форматированный с кодом)
-         * Возвращает:
-         *     (void)
-         * Исключения:
-         *     RuntimeException - если Telegram API возвращает код ответа отличный от 200
-         */
         val urlString = "https://api.telegram.org/bot$BOT_TOKEN/sendMessage"
 
         val url = URL(urlString)

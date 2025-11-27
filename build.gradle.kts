@@ -2,6 +2,7 @@ plugins {
     id("java")
     id("org.jetbrains.kotlin.jvm") version "1.9.22"
     id("org.jetbrains.intellij.platform") version "2.7.1"
+    id("org.jetbrains.dokka") version "1.9.0"
 }
 
 group = "com.smetankochka"

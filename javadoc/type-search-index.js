@@ -1,0 +1,1 @@
+var typeSearchIndex = [{"p":"com.smetankochka.telegramcodesender","l":"SendToTelegramAction","url":"com/smetankochka/telegramcodesender/SendToTelegramAction.html"}, {"l":"All classes","url":"allclasses.html"}]
